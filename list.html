@@ -1,0 +1,73 @@
+<html>
+
+<head>
+    <title>Minecraft Lists: Main Page</title>
+    <link rel="icon" type="image/webp" href="icons/enchant_book.webp" />
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+    <link rel="stylesheet" href="geral.css">
+    <link rel="stylesheet" href="listStyle.css">
+    <script src="main.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCBzaKNN6rGQTeXZU8Cqn3VIpaj2kVqFjE",
+            authDomain: "listas-230c4.firebaseapp.com",
+            databaseURL: "https://listas-230c4-default-rtdb.firebaseio.com",
+            projectId: "listas-230c4",
+            storageBucket: "listas-230c4.appspot.com",
+            messagingSenderId: "813366107524",
+            appId: "1:813366107524:web:020b11ddd988eb0952d1d1"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+</head>
+
+<body>
+    <div id="options" style="float: left; background-image: url(Assets/StoneBar.png);">
+        <h1 style="font-size: 60px; text-shadow: 5px 5px 5px cadetblue;">Minecraft Lists</h1>
+        <hr>
+        <center>
+            <div class="Mc-Btn" onclick="goTo('#output')">
+                <img src="icons/chest.webp" style="width: 50px; height: 50px; float: left;">
+                <h3>List Content</h3>
+            </div>
+            <div class="Mc-Btn" onclick="goTo('#addBar')">
+                <img src="icons/feather.png" style="width: 50px; height: 50px; float: left;">
+                <h3>Add Item</h3>
+            </div>
+        </center>
+    </div>
+    <div id="mainDiv" style="width: 65%;float: right; background-image: url(Assets/Wood\ Background.jpg);z-index: 1px;">
+        <img src="Assets/MINECRAFT_img_background.jpg" style="width: 100%; height: 80%;">
+        <center>
+            <h1 id="title">Loading</h1>
+        </center>
+        <div id="output" class="listSection"></div>
+        <br>
+        <div id="addBar" class="listSection">
+            <center>
+                <br>
+                <br>
+                <br>
+                <div
+                    style="width: 400px; background-color: rgba(240, 248, 255, 0.200); border: 2px ridge rgba(240, 248, 255, 0.200);">
+                    <img src="icons/feather.png" style="width: 50px; height: 50px; float: left;">
+
+                    <h3>>Add Item to list:</h3>
+                    <input id="itemAdd" placeholder="Insert Item Name">
+                    <hr>
+                    <span><button onclick="send(false)"
+                            style="background-color: lawngreen; border: 5px ridge green;">Send
+                            this to list</button></span> <button onclick="send(true)"
+                        style="background-color: orange; border: 5px ridge red;">Send as important</button>
+                </div>
+                <br>
+                <br>
+                <br>
+            </center>
+        </div>
+    </div>
+</body>
+
+</html>

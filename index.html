@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <title>Minecraft Lists: Log-in</title>
+    <link rel="icon" type="image/webp" href="icons/enchant_book.webp" />
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+    <link rel="stylesheet" href="geral.css">
+    <script src="ListJoing.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCBzaKNN6rGQTeXZU8Cqn3VIpaj2kVqFjE",
+            authDomain: "listas-230c4.firebaseapp.com",
+            databaseURL: "https://listas-230c4-default-rtdb.firebaseio.com",
+            projectId: "listas-230c4",
+            storageBucket: "listas-230c4.appspot.com",
+            messagingSenderId: "813366107524",
+            appId: "1:813366107524:web:020b11ddd988eb0952d1d1"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+</head>
+
+<body background="Assets/MINECRAFT_img_background.jpg" style="color: aliceblue; background-size: cover;">
+    <center>
+        <br><br>
+        <h1 style="font-size: 60px; text-shadow: 5px 5px 5px green;">MINECRAFT LISTS</h1>
+        <br><br>
+        <div id="Login"
+            style="border-style: ridge; border-width: 7px; border-color: green; background-image: url(Assets/Wood\ Background.jpg); width: 500px;">
+            <img src="icons/enchant_book.webp" style="width: 50px; height: 50px; float: left;">
+            <br><br>
+            <hr>
+            <h2>Enter the list name you want to edit:</h2>
+            <input id="list-name" placeholder="list name" style="background-color: black; border: green 5px ridge; color: aliceblue;">
+             <button style="background-color: black; border: cyan 5px ridge; color: aliceblue;" onclick="joinList()">Log-in List</button>
+             <button style="background-color: black; border: purple 5px ridge; color: aliceblue;" onclick="addList()">Create List</button>
+            <hr>
+            <br><br>
+        </div>
+    </center>
+</body>
+
+</html>

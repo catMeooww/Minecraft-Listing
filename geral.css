@@ -1,0 +1,9 @@
+@font-face {
+    font-family: Minecraft;
+    src: url(./assets/Minecraft.ttf);
+}
+ 
+body{
+    font-family: Minecraft;
+    background-color: rgb(87, 86, 86);
+}

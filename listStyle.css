@@ -1,0 +1,43 @@
+#title{
+    font-size: 60px; 
+    text-shadow: 5px 5px 5px green;
+    color: aliceblue;
+    position: absolute;
+    width: 500px;
+    z-index: 10px;
+    top: 50px;
+    right: 150px;
+}
+
+#options{
+    position: fixed;
+    z-index: 10px;
+    width: 34.5%;
+    height: 100%;
+    border-right: 5px ridge rgb(87, 86, 86);
+    text-align: center;
+    color: aliceblue;
+}
+
+.Mc-Btn{
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.400);
+    border: ridge 6px black;
+    width: 300px;
+    cursor: pointer;
+}
+
+.serverInfo{
+    color: blue;
+    text-shadow: 5px 5px 5px cyan;
+}
+
+.listItem{
+    color: aliceblue;
+    text-shadow: 5px 5px 5px grey;
+    font-size: 15px;
+}
+
+.listSection{
+    border-bottom: solid 2px green ;
+}
