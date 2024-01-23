@@ -20,7 +20,7 @@
 }
 
 .Mc-Btn{
-    padding: 10px;
+    padding: 5px;
     background-color: rgba(0, 0, 0, 0.400);
     border: ridge 6px black;
     width: 300px;
@@ -36,8 +36,32 @@
     color: aliceblue;
     text-shadow: 5px 5px 5px grey;
     font-size: 15px;
+    display: inline;
+}
+
+.listItem h4,p{
+    width: 80%;
 }
 
 .listSection{
-    border-bottom: solid 2px green ;
+    border-bottom: ridge 5px green ;
+}
+
+#selectionItem{
+    color:aliceblue;
+    background-color: black;
+    border: ridge 5px green ;
+    width: 300px;
+    padding: 5px;
+}
+
+.deletebtn{
+    z-index: 10px;
+    position: relative;
+    float: right;
+    border:ridge 5px red;
+    background-image: url(icons/Creeper.png);
+    background-size: 30px;
+    width: 40px;
+    height: 40px;
 }

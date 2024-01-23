@@ -1,9 +1,18 @@
+.Sites-Btn{
+    color: chartreuse;
+    display: inline-block;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.400);
+    border: ridge 6px green;
+    cursor: pointer;
+}
+
 @font-face {
     font-family: Minecraft;
     src: url(./assets/Minecraft.ttf);
 }
  
 body{
-    font-family: Minecraft;
     background-color: rgb(87, 86, 86);
+    font-family: Minecraft;
 }
