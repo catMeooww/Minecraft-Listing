@@ -77,6 +77,41 @@ function selectRandomItem(type){
  }
 }
 
+function guide(n){
+  if(n == 1){
+    msg = "(axe) 2 sticks | 3 diamonds";
+    firebase.database().ref(listName).push({
+      message: msg,
+      important: false
+    });
+  }else if(n == 2){
+    msg = "(hoe) 2 sticks | 2 diamonds";
+    firebase.database().ref(listName).push({
+      message: msg,
+      important: false
+    });
+  }else if(n == 3){
+    msg = "(pickaxe) 2 sticks | 3 diamonds";
+    firebase.database().ref(listName).push({
+      message: msg,
+      important: false
+    });
+  }else if(n == 4){
+    msg = "(shovel) 2 sticks | 1 diamond";
+    firebase.database().ref(listName).push({
+      message: msg,
+      important: false
+    });
+  }else{
+    msg = "(sword) 1 sticks | 2 diamonds";
+    firebase.database().ref(listName).push({
+      message: msg,
+      important: false
+    });
+  }
+  window.location = "#output";
+}
+
 function deleteItem(itemId) {
   swal(
     {

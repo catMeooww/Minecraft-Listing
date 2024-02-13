@@ -43,6 +43,10 @@
                 <img src="icons/Dropper.png" style="width: 50px; height: 50px; float: left;">
                 <h3>Ramdom Item</h3>
             </div>
+            <div class="Mc-Btn" onclick="goTo('#craftGuide')">
+                <img src="icons/CraftTable.webp" style="width: 50px; height: 50px; float: left;">
+                <h3>Craft Guide</h3>
+            </div>
             <div class="Mc-Btn" onclick="goTo('index.html')">
                 <img src="icons/exitdoor.webp" style="width: 50px; height: 50px; float: left;">
                 <h3>Exit List</h3>
@@ -57,6 +61,7 @@
         <div id="output" class="listSection">Waiting for Database</div>
         <br>
         <div id="addBar" class="listSection">
+            <h2 style="color: white;"> Add Item to list</h2>
             <center>
                 <br>
                 <br>
@@ -64,10 +69,14 @@
                 <br>
                 <div style="width: 80%; border:solid 1px white">
                     <img src="icons/feather.png" style="width: 50px; height: 50px; float: left;">
-                    <br>
-                    <h2 style="color: white;">Add Item to list:</h2>
-                    <input type="text" id="itemAdd" placeholder="Insert Item Name"
-                        style="background-color: black; border: green 5px ridge; color: aliceblue;">
+                    <span>
+                        <h3 style="color: white; width: 100px;">Item Data:</h3>
+                    </span>
+                    <div style="width:300px;padding:5px;">
+                        <br>
+                        <input type="text" id="itemAdd" placeholder="Insert Item Name"
+                            style="background-color: black; border: green 5px ridge; color: aliceblue;">
+                    </div>
                     <hr>
                     <span><button onclick="send(false)"
                             style="background-color: lawngreen; border: 5px ridge green;"><b>Send
@@ -83,7 +92,7 @@
             </center>
         </div>
         <div id="chooseItem" class="listSection">
-            <h2 style="color: white;">Item Selector</h2>
+            <h2 style="color: white;"> Item Selector</h2>
             <br>
             <br>
             <br>
@@ -94,12 +103,45 @@
                         <h3 style="color: white; width: 50px;">Result:</h3>
                     </span>
                     <h3 id="selectionItem">Select a random item</h3>
+                    <hr>
                     <button style="background-color: lawngreen; border: 5px ridge green;"
                         onclick="selectRandomItem(0)"><b>All List</b></button>
                     <button style="background-color: cyan; border: 5px ridge cadetblue;"
                         onclick="selectRandomItem(1)">Only Normal</button>
                     <button style="background-color: violet; border: 5px ridge purple;"
                         onclick="selectRandomItem(2)">Only Important</button>
+                    <br><br>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            </center>
+        </div>
+        <div id="craftGuide" class="listSection">
+            <h2 style="color: white;"> Crafting Guide</h2>
+            <br>
+            <br>
+            <br>
+            <center>
+                <div style="width: 80%; border:solid 1px white">
+                    <img src="icons/CraftTable.webp" style="width: 50px; height: 50px; float: left;">
+                    <span>
+                        <h3 style="color: white; width: 50px;">Table:</h3>
+                    </span>
+                    <img src="Assets/CraftUi.webp">
+                    <hr>
+                    <button style="background-color: black;" onclick="guide(1)"><img src="icons/craft_guide/axe.webp"
+                            width="40px"></button>
+                    <button style="background-color: black;" onclick="guide(2)"><img src="icons/craft_guide/hoe.webp"
+                            width="40px"></button>
+                    <button style="background-color: black;" onclick="guide(3)"><img
+                            src="icons/craft_guide/pickaxe.webp" width="40px"></button>
+                    <button style="background-color: black;" onclick="guide(4)"><img src="icons/craft_guide/shovel.webp"
+                            width="40px"></button>
+                    <button style="background-color: black;" onclick="guide(5)"><img src="icons/craft_guide/sword.webp"
+                            width="40px"></button>
                     <br><br>
                 </div>
                 <br>
