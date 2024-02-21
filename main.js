@@ -132,3 +132,36 @@ function deleteItem(itemId) {
     }
   );
 }
+
+function send_special() {
+  msg = document.getElementById("commandbar").value;
+
+  if(msg == ""){
+    document.getElementById("commandbar").value += "Insert Item Here!";
+  }else{
+    window.location = "#output";
+    firebase.database().ref(listName).push({
+      message: msg,
+      important: false
+    });
+  }
+
+}
+
+function addSpecial(tag){
+  if(tag == "purple"){
+    document.getElementById("commandbar").value += "<b class='sp'></b>";
+  }else if(tag == "green"){
+    document.getElementById("commandbar").value += "<b class='sg'></b>";
+  }else if(tag == "red"){
+    document.getElementById("commandbar").value += "<b class='sr'></b>";
+  }else if(tag == "cyan"){
+    document.getElementById("commandbar").value += "<b class='sb'></b>";
+  }else{
+  document.getElementById("commandbar").value += tag;
+  }
+}
+
+function clear_command(){
+  document.getElementById("commandbar").value = " ";
+}

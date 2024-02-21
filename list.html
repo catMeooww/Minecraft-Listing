@@ -47,6 +47,10 @@
                 <img src="icons/CraftTable.webp" style="width: 50px; height: 50px; float: left;">
                 <h3>Craft Guide</h3>
             </div>
+            <div class="Mc-Btn" onclick="goTo('#specialText')">
+                <img src="icons/CommandBlock.webp" style="width: 50px; height: 50px; float: left;">
+                <h3>Commands</h3>
+            </div>
             <div class="Mc-Btn" onclick="goTo('index.html')">
                 <img src="icons/exitdoor.webp" style="width: 50px; height: 50px; float: left;">
                 <h3>Exit List</h3>
@@ -146,6 +150,44 @@
                 </div>
                 <br>
                 <br>
+                <br>
+                <br>
+                <br>
+            </center>
+        </div>
+        <div id="specialText" class="listSection">
+            <hr>
+            <h2 style="color: white;"> Special Text</h2>
+            <center>
+                <img src="icons/Redstone.webp" style="width: 50px; height: 50px; float: left;">
+                <span>
+                    <h3 style="color: white;">Insert Text:</h3>
+                </span>
+                <div style="color:antiquewhite;">
+                    <hr>
+                    <br><label>Commands</label><br>
+                    <button class="specialAdd" onclick="addSpecial('<h1> </h1>')">Giant Text</button>
+                    <button class="specialAdd" onclick="addSpecial('<h2> </h2>')">Big Text</button>
+                    <button class="specialAdd" onclick="addSpecial('<h3> </h3>')">Medium Text</button>
+                    <button class="specialAdd" onclick="addSpecial('<h5> </h5>')">Small Text</button>
+                    <button class="specialAdd" onclick="addSpecial('<h6> </h6>')">Tiny Text</button>
+                    <button class="specialAdd" onclick="addSpecial('<br>')">Break Line</button>
+                    <button class="specialAdd" onclick="addSpecial('purple')">Purple</button>
+                    <button class="specialAdd" onclick="addSpecial('green')">Green</button>
+                    <button class="specialAdd" onclick="addSpecial('red')">Red</button>
+                    <button class="specialAdd" onclick="addSpecial('cyan')">Cyan</button>
+                </div>
+                <br>
+                <div>
+                    <textarea id="commandbar"></textarea>
+                </div>
+                <br>
+                <div>
+                    <button onclick="send_special()"
+                    style="background-color: lawngreen; border: 5px ridge green;"><b>Execute/Send</b></button>
+                    <button onclick="clear_command()"
+                    style="background-color: darkred; border: 5px ridge green;"><b>Clear</b></button>
+                </div>
                 <br>
                 <br>
                 <br>

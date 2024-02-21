@@ -1,5 +1,5 @@
-#title{
-    font-size: 60px; 
+#title {
+    font-size: 60px;
     text-shadow: 5px 5px 5px green;
     color: aliceblue;
     position: absolute;
@@ -9,7 +9,7 @@
     right: 150px;
 }
 
-#options{
+#options {
     position: fixed;
     z-index: 10px;
     width: 34.5%;
@@ -19,7 +19,7 @@
     color: aliceblue;
 }
 
-.Mc-Btn{
+.Mc-Btn {
     padding: 1px;
     background-color: rgba(0, 0, 0, 0.400);
     border: ridge 6px black;
@@ -27,41 +27,75 @@
     cursor: pointer;
 }
 
-.serverInfo{
+.serverInfo {
     color: blue;
     text-shadow: 5px 5px 5px cyan;
 }
 
-.listItem{
+.listItem {
     color: aliceblue;
     text-shadow: 5px 5px 5px grey;
     font-size: 15px;
     display: inline;
 }
 
-.listItem h4,p{
+.listItem h4,
+p {
     width: 80%;
 }
 
-.listSection{
-    border-bottom: ridge 5px green ;
+.listSection {
+    border-bottom: ridge 5px green;
 }
 
-#selectionItem{
-    color:aliceblue;
+#selectionItem {
+    color: aliceblue;
     background-color: black;
-    border: ridge 5px green ;
+    border: ridge 5px green;
     width: 300px;
     padding: 5px;
 }
 
-.deletebtn{
+.deletebtn {
     z-index: 10px;
     position: relative;
     float: right;
-    border:ridge 5px red;
+    border: ridge 5px red;
     background-image: url(icons/Creeper.png);
     background-size: 30px;
     width: 40px;
     height: 40px;
+}
+
+#specialText {
+    background-image: url(Assets/StoneBar.png);
+}
+
+#commandbar {
+    background-color: dimgray;
+    border: 5px purple ridge;
+    color: aliceblue;
+    width: 600px;
+    height: 200px;
+    font-family: Minecraft;
+}
+
+.specialAdd {
+    background-color: purple;
+    border: 5px green ridge;
+    color: aliceblue;
+}
+
+
+.sp {
+    color: purple;
+}
+.sg {
+    color: chartreuse;
+}
+.sr {
+    color: red;
+}
+.sb {
+    color: cyan;
 }
