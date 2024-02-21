@@ -11,6 +11,7 @@ Add itens to the list in the Add Item section, You can add a simple item (emeral
 ## functionalities
 Item Selector: select a random item of the list, you can choose if it will select all the list, only normal or only important itens.
 Crafting Guide: this will add a small list of itens you need to craft what you want.
+Commands: want to make your list more special? In the commands you can add color and change the size of the Text.
 
 ## Other helpful things are coming!
 To better use your list, I am adding new functions in the site!
