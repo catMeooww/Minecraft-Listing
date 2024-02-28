@@ -1,0 +1,99 @@
+<html>
+
+<head>
+    <title>Minecraft Lists: Creating</title>
+    <link rel="icon" type="image/webp" href="icons/enchant_book.webp" />
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+    <link rel="stylesheet" href="geral.css">
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCBzaKNN6rGQTeXZU8Cqn3VIpaj2kVqFjE",
+            authDomain: "listas-230c4.firebaseapp.com",
+            databaseURL: "https://listas-230c4-default-rtdb.firebaseio.com",
+            projectId: "listas-230c4",
+            storageBucket: "listas-230c4.appspot.com",
+            messagingSenderId: "813366107524",
+            appId: "1:813366107524:web:020b11ddd988eb0952d1d1"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+</head>
+
+<body background="Assets/MINECRAFT_img_background.jpg" style="color: aliceblue; background-size: cover;">
+    <center>
+        <br>
+        <h1 style="font-size: 60px; text-shadow: 5px 5px 5px green;">MINECRAFT LISTS</h1>
+        <div id="Login"
+            style="border-style: ridge; border-width: 7px; border-color: green; background-image: url(Assets/Wood\ Background.jpg); width: 700px;">
+            <br><br>
+            <div style="display: inline;">
+                <img src="icons/chest.webp" style="width: 50px; height: 50px;">
+                <img src="icons/feather.png" style="width: 50px; height: 50px;">
+                <img src="icons/Dropper.png" style="width: 50px; height: 50px;">
+                <img src="icons/CraftTable.webp" style="width: 50px; height: 50px;">
+                <img src="icons/CommandBlock.webp" style="width: 50px; height: 50px;">
+                <img src="icons/Redstone.webp" style="width: 50px; height: 50px;">
+            </div>
+            <hr>
+            <img src="icons/enchant_book.webp" style="width: 50px; height: 50px; float: left;">
+            <h2>List Creation - Here all starts</h2>
+            <input id="list-name" placeholder="List-Name" type="text"
+                style="background-color: black; border: green 5px ridge; color: aliceblue;">
+
+            <button style="background-color: black; border: purple 5px ridge; color: aliceblue;"
+                onclick="addList()">Create List</button>
+
+            <p id="log-list-output">List-Name does not use special characters</p>
+            <hr>
+            <img src="icons/End_Portal.webp" style="width: 50px; height: 50px; float: left;">
+            <h2>Already have a list?</h2>
+            <button style="background-color: black; border: cyan 5px ridge; color: aliceblue;" onclick="goback()">Return
+                to Log-in</button>
+            <br><br>
+        </div>
+    </center>
+    <p style="position:fixed;bottom:0px;left:10px;">Minecraft Lists by CatMeooww10</p>
+    <script>
+        function goback() {
+            window.location = "index.html";
+        }
+
+        function addList() {
+            listName = document.getElementById("list-name").value;
+            if (!listName == "") {
+                var listref = firebase.database().ref(listName + "/servermessage");
+                var isListCreated;
+                var isJoining = false;
+                listref.on("value", data => {
+                    isListCreated = data.val();
+                    console.log(isListCreated);
+                    if (!isJoining) {
+                        isJoining = true;
+                        if (isListCreated == null) {
+                            sm = "Started a new list: " + listName
+                            firebase.database().ref("/").child(listName).update({
+                                servermessage: sm
+                            });
+                            localStorage.setItem("list", listName);
+                            redirect();
+                        } else {
+                            document.getElementById("log-list-output").innerHTML = "List Already exixts";
+                        }
+                    }
+                });
+            } else {
+                document.getElementById("log-list-output").innerHTML = "List name can not be Empty";
+            }
+        }
+
+        function redirect() {
+            setTimeout(() => {
+                window.location = "list.html";
+            }, 500)
+        }
+    </script>
+</body>
+
+</html>
