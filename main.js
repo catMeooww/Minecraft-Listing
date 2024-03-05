@@ -3,6 +3,10 @@ var listArray = [];
 var importantListArray = [];
 var normalListArray = [];
 
+if(listName == undefined){
+  window.location = "index.html";
+}
+
 function getData() {
   firebase.database().ref("/" + listName).on('value', function (snapshot) {
     document.getElementById("output").innerHTML = "";
