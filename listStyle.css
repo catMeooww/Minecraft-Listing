@@ -27,6 +27,7 @@
     cursor: pointer;
 }
 
+/*List Items*/
 .serverInfo {
     color: blue;
     text-shadow: 5px 5px 5px cyan;
@@ -76,6 +77,8 @@ p {
     height: 40px;
 }
 
+/*Special Text*/
+
 #specialText {
     background-image: url(Assets/StoneBar.png);
 }
@@ -110,11 +113,6 @@ p {
 
 .sb {
     color: cyan;
-}
-
-@font-face {
-    font-family: Enchant;
-    src: url(Minecraft_Galactic.ttf);
 }
 
 .sEnchant {

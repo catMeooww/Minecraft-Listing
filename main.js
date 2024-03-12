@@ -7,6 +7,8 @@ if (listName == undefined) {
   window.location = "index.html";
 }
 
+//OUTPUT
+
 function getData() {
   firebase.database().ref("/" + listName).on('value', function (snapshot) {
     document.getElementById("output").innerHTML = "";
@@ -48,6 +50,8 @@ setTimeout(() => {
   getData();
 }, 500)
 
+
+//send things
 function send(importants) {
   msg = document.getElementById("itemAdd").value;
   if (!msg == "") {
@@ -73,6 +77,8 @@ function goTo(where) {
   window.location = where;
 }
 
+//select random item
+
 function selectRandomItem(type) {
   if (type == 0) {
     selected = Math.floor(Math.random() * listArray.length);
@@ -86,6 +92,8 @@ function selectRandomItem(type) {
   }
 }
 
+
+//craft guide
 function guide(n) {
   if (n == 1) {
     msg = "(axe) 2 sticks | 3 diamonds";
@@ -121,6 +129,8 @@ function guide(n) {
   window.location = "#output";
 }
 
+
+//item delete
 function deleteItem(itemId) {
   swal(
     {
@@ -141,6 +151,8 @@ function deleteItem(itemId) {
     }
   );
 }
+
+//special text
 
 function send_special() {
   msg = document.getElementById("commandbar").value;

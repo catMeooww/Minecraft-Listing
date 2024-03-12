@@ -2,6 +2,10 @@
     font-family: Minecraft;
     src: url(Minecraft.ttf);
 }
+@font-face {
+    font-family: Enchant;
+    src: url(Minecraft_Galactic.ttf);
+}
 
 .Sites-Btn{
     color: chartreuse;
