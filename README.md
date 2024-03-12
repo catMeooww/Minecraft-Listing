@@ -11,7 +11,7 @@ ________________________________________________
 ## functionalities
  - Item Selector: select a random item of the list, you can choose if it will select all the list, only normal or only important items.
  - Crafting Guide: this will add a small list of items you need to craft what you want.
- - Commands: want to make your list more special? In the commands you can add color and change the size of the Text.
+ - Commands: want to make your list more special? In the commands you can add color and change the size of the Text. You can send in enchant language or create a random text now!
 
 ## Other helpful things are coming!
  - To better use your list, I am adding new functions in the site!
