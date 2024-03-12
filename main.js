@@ -52,6 +52,7 @@ function send(importants) {
   msg = document.getElementById("itemAdd").value;
   if (!msg == "") {
     document.getElementById("itemAdd").value = "";
+    document.getElementById("itemAdd").placeholder = "Insert Item Name";
     if (importants) {
       firebase.database().ref(listName).push({
         message: msg,
@@ -63,6 +64,8 @@ function send(importants) {
         important: false
       });
     }
+  }else{
+    document.getElementById("itemAdd").placeholder = "Item name can not be empty";
   }
 }
 
@@ -163,8 +166,25 @@ function addSpecial(tag) {
     document.getElementById("commandbar").value += "<b class='sr'></b>";
   } else if (tag == "cyan") {
     document.getElementById("commandbar").value += "<b class='sb'></b>";
+  }else if(tag == "Enchant"){
+    document.getElementById("commandbar").value += "<b class='sEnchant'></b>";
   } else {
     document.getElementById("commandbar").value += tag;
+  }
+}
+
+function randomSpecial(){
+  rtext = Math.floor(Math.random() * 5);
+  if(rtext == 1){
+    document.getElementById("commandbar").value = "Hello World";
+  }else if(rtext == 2){
+    document.getElementById("commandbar").value = "Step 1: Just do It";
+  }else if(rtext == 3){
+    document.getElementById("commandbar").value = "This is better than paper";
+  }else if(rtext == 4){
+    document.getElementById("commandbar").value = "Creeper Aw Man";
+  }else{
+    document.getElementById("commandbar").value = "Normal day in Ohiocraft";
   }
 }
 

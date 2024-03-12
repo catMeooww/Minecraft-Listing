@@ -32,6 +32,15 @@
     text-shadow: 5px 5px 5px cyan;
 }
 
+#itemAdd {
+    background-color: black;
+    border: green 5px ridge;
+    color: aliceblue;
+    width: 300px;
+    padding: 5px;
+    font-family: Minecraft;
+}
+
 .listItem {
     color: aliceblue;
     text-shadow: 5px 5px 5px grey;
@@ -90,12 +99,25 @@ p {
 .sp {
     color: purple;
 }
+
 .sg {
     color: chartreuse;
 }
+
 .sr {
     color: red;
 }
+
 .sb {
     color: cyan;
+}
+
+@font-face {
+    font-family: Enchant;
+    src: url(Minecraft_Galactic.ttf);
+}
+
+.sEnchant {
+    font-family: Enchant;
+    text-transform: uppercase;
 }
