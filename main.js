@@ -57,7 +57,7 @@ setTimeout(() => {
 function loadtheme() {
   console.log(theme)
   if (theme == "dark") {
-    document.getElementById("mainDiv").style.backgroundImage = "url(assets/DarkWoodBackground.jpg)";
+    document.getElementById("mainDiv").style.backgroundImage = "url(Assets/DarkWoodBackground.jpg)";
   }
 }
 
