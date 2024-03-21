@@ -4,8 +4,13 @@ function addList() {
 
 function joinList() {
   listName = document.getElementById("list-name").value;
+  listNumber = Number(document.getElementById("list-number").value);
   if (!listName == "") {
-    var listref = firebase.database().ref(listName + "/servermessage");
+    if(listNumber == 0){
+      var listref = firebase.database().ref(listName + "/servermessage");
+    }else{
+    var listref = firebase.database().ref(listName + "|" + listNumber + "/servermessage");
+    }
     var isListCreated;
     var isJoining = false;
     listref.on("value", data => {
@@ -14,7 +19,12 @@ function joinList() {
       if (!isJoining) {
         isJoining = true;
         if (isListCreated == "Started a new list: " + listName) {
-          localStorage.setItem("list", listName);
+          if(listNumber == 0){
+            localStorage.setItem("list", listName);
+          }else{
+            localStorage.setItem("list", listName + "|" + listNumber);
+          }
+          localStorage.setItem("list_title", listName);
           redirect();
         } else {
           document.getElementById("log-list-output").innerHTML = "Could not find list";

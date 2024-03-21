@@ -41,6 +41,8 @@
             <h2>List Creation - Here all starts</h2>
             <input id="list-name" placeholder="List-Name" type="text"
                 style="background-color: black; border: green 5px ridge; color: aliceblue;">
+            <input id="list-number" placeholder="00" type="number"
+                style="background-color: black; border: cadetblue 5px ridge; color: aliceblue;width: 50px;">
 
             <button style="background-color: black; border: purple 5px ridge; color: aliceblue;"
                 onclick="addList()">Create List</button>
@@ -62,8 +64,13 @@
 
         function addList() {
             listName = document.getElementById("list-name").value;
+            listNumber = Number(document.getElementById("list-number").value);
             if (!listName == "") {
-                var listref = firebase.database().ref(listName + "/servermessage");
+                if (listNumber == 0) {
+                    var listref = firebase.database().ref(listName + "/servermessage");
+                } else {
+                    var listref = firebase.database().ref(listName + "|" + listNumber + "/servermessage");
+                }
                 var isListCreated;
                 var isJoining = false;
                 listref.on("value", data => {
@@ -73,10 +80,21 @@
                         isJoining = true;
                         if (isListCreated == null) {
                             sm = "Started a new list: " + listName
-                            firebase.database().ref("/").child(listName).update({
+                            if (listNumber == 0) {
+                                firebase.database().ref(listName).update({
                                 servermessage: sm
                             });
-                            localStorage.setItem("list", listName);
+                            } else {
+                                firebase.database().ref(listName + "|" + listNumber).update({
+                                servermessage: sm
+                            });
+                            }
+                            if (listNumber == 0) {
+                                localStorage.setItem("list", listName);
+                            } else {
+                                localStorage.setItem("list", listName + "|" + listNumber);
+                            }
+                            localStorage.setItem("list_title", listName);
                             redirect();
                         } else {
                             document.getElementById("log-list-output").innerHTML = "List Already exixts";

@@ -1,4 +1,6 @@
 var listName = localStorage.getItem("list");
+var listTitle = localStorage.getItem("list_title");
+var theme = localStorage.getItem("theme");
 var listArray = [];
 var importantListArray = [];
 var normalListArray = [];
@@ -44,19 +46,31 @@ function getData() {
       }
     });
   });
-  document.getElementById("title").innerHTML = listName;
+  document.getElementById("title").innerHTML = listTitle;
+  document.getElementById("subtitle").innerHTML = listName;
+  document.getElementById("listIdHandler").innerHTML = listName;
 }
 setTimeout(() => {
   getData();
 }, 500)
 
+function loadtheme() {
+  console.log(theme)
+  if (theme == "dark") {
+    document.getElementById("mainDiv").style.backgroundImage = "url(assets/DarkWoodBackground.jpg)";
+  }
+}
 
 //send things
+
 function send(importants) {
   msg = document.getElementById("itemAdd").value;
-  if (!msg == "") {
+
+  if (msg == "") {
+    document.getElementById("itemAdd").placeholder = "Item name can not be empty";
+  } else {
     document.getElementById("itemAdd").value = "";
-    document.getElementById("itemAdd").placeholder = "Insert Item Name";
+    document.getElementById("itemAdd").placeholder = "Insert Item to send!";
     if (importants) {
       firebase.database().ref(listName).push({
         message: msg,
@@ -68,8 +82,6 @@ function send(importants) {
         important: false
       });
     }
-  }else{
-    document.getElementById("itemAdd").placeholder = "Item name can not be empty";
   }
 }
 
@@ -154,52 +166,50 @@ function deleteItem(itemId) {
 
 //special text
 
-function send_special() {
-  msg = document.getElementById("commandbar").value;
-
-  if (msg == "") {
-    document.getElementById("commandbar").value += "Insert Item Here!";
-  } else {
-    window.location = "#output";
-    firebase.database().ref(listName).push({
-      message: msg,
-      important: false
-    });
-  }
-
-}
-
 function addSpecial(tag) {
   if (tag == "purple") {
-    document.getElementById("commandbar").value += "<b class='sp'></b>";
+    document.getElementById("itemAdd").value += "<b class='sp'></b>";
   } else if (tag == "green") {
-    document.getElementById("commandbar").value += "<b class='sg'></b>";
+    document.getElementById("itemAdd").value += "<b class='sg'></b>";
   } else if (tag == "red") {
-    document.getElementById("commandbar").value += "<b class='sr'></b>";
+    document.getElementById("itemAdd").value += "<b class='sr'></b>";
   } else if (tag == "cyan") {
-    document.getElementById("commandbar").value += "<b class='sb'></b>";
-  }else if(tag == "Enchant"){
-    document.getElementById("commandbar").value += "<b class='sEnchant'></b>";
+    document.getElementById("itemAdd").value += "<b class='sb'></b>";
+  } else if (tag == "Enchant") {
+    document.getElementById("itemAdd").value += "<b class='sEnchant'></b>";
   } else {
-    document.getElementById("commandbar").value += tag;
+    document.getElementById("itemAdd").value += tag;
   }
 }
 
-function randomSpecial(){
+function randomSpecial() {
   rtext = Math.floor(Math.random() * 5);
-  if(rtext == 1){
-    document.getElementById("commandbar").value = "Hello World";
-  }else if(rtext == 2){
-    document.getElementById("commandbar").value = "Step 1: Just do It";
-  }else if(rtext == 3){
-    document.getElementById("commandbar").value = "This is better than paper";
-  }else if(rtext == 4){
-    document.getElementById("commandbar").value = "Creeper Aw Man";
-  }else{
-    document.getElementById("commandbar").value = "Normal day in Ohiocraft";
+  if (rtext == 1) {
+    document.getElementById("itemAdd").value = "Hello World";
+  } else if (rtext == 2) {
+    document.getElementById("itemAdd").value = "Step 1: Just do It";
+  } else if (rtext == 3) {
+    document.getElementById("itemAdd").value = "This is better than paper";
+  } else if (rtext == 4) {
+    document.getElementById("itemAdd").value = "Creeper Aw Man";
+  } else {
+    document.getElementById("itemAdd").value = "Normal day in Ohiocraft";
   }
 }
 
 function clear_command() {
-  document.getElementById("commandbar").value = "";
+  document.getElementById("itemAdd").value = "";
+}
+
+function darkTheme() {
+    localStorage.setItem("theme", "dark");
+    location.reload();
+}
+function defaultTheme() {
+  localStorage.setItem("theme", "default");
+  location.reload();
+}
+
+function catmeow(){
+  window.location = "https://catmeooww.github.io/CatMeooww/catmeoowwProjects.html";
 }

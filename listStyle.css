@@ -8,6 +8,16 @@
     top: 50px;
     right: 150px;
 }
+#subtitle {
+    font-size: 10px;
+    text-shadow: 3px 3px 3px green;
+    color:aliceblue;
+    position: absolute;
+    width: 500px;
+    z-index: 10px;
+    top: 130px;
+    right: 150px;
+}
 
 #options {
     position: fixed;
@@ -37,7 +47,8 @@
     background-color: black;
     border: green 5px ridge;
     color: aliceblue;
-    width: 300px;
+    width: 500px;
+    height: 150px;
     padding: 5px;
     font-family: Minecraft;
 }
@@ -79,17 +90,8 @@ p {
 
 /*Special Text*/
 
-#specialText {
+#configurations {
     background-image: url(Assets/StoneBar.png);
-}
-
-#commandbar {
-    background-color: dimgray;
-    border: 5px purple ridge;
-    color: aliceblue;
-    width: 600px;
-    height: 200px;
-    font-family: Minecraft;
 }
 
 .specialAdd {
@@ -118,4 +120,22 @@ p {
 .sEnchant {
     font-family: Enchant;
     text-transform: uppercase;
+}
+
+#configs{
+    color: azure;
+    text-align: right;
+}
+
+#configs label{
+    float: left;
+}
+
+#configs .active{
+    background-color: greenyellow;
+    color: gray;
+}
+#configs .desactive{
+    background-color: red;
+    color: aliceblue;
 }

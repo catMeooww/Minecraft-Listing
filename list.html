@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="alert/sweetalert.css">
 </head>
 
-<body>
+<body onload="loadtheme()">
     <div id="options" style="float: left; background-image: url(Assets/StoneBar.png);">
         <h1 style="font-size: 60px; text-shadow: 5px 5px 5px cadetblue;">Minecraft Lists</h1>
         <hr>
@@ -47,7 +47,7 @@
                 <img src="icons/CraftTable.webp" style="width: 50px; height: 50px; float: left;">
                 <h3>Craft Guide</h3>
             </div>
-            <div class="Mc-Btn" onclick="goTo('#specialText')">
+            <div class="Mc-Btn" onclick="goTo('#configurations')">
                 <img src="icons/CommandBlock.webp" style="width: 50px; height: 50px; float: left;">
                 <h3>Commands</h3>
             </div>
@@ -61,37 +61,46 @@
         <img src="Assets/MINECRAFT_img_background.jpg" style="width: 100%; height: 80%;">
         <center>
             <h1 id="title">Loading</h1>
+            <h5 id="subtitle"></h5>
         </center>
         <div id="output" class="listSection">Waiting for Database</div>
         <br>
         <div id="addBar" class="listSection">
             <h2 style="color: white;"> Add Item to list</h2>
             <center>
-                <br>
-                <br>
-                <br>
-                <br>
-                <div style="width: 80%; border:solid 1px white">
-                    <img src="icons/feather.png" style="width: 50px; height: 50px; float: left;">
-                    <span>
-                        <h3 style="color: white; width: 100px;">Item Data:</h3>
-                    </span>
-                    <div style="width:300px;padding:5px;">
-                        <br>
-                        <input type="text" id="itemAdd" placeholder="Insert Item Name">
-                    </div>
+                <div style="width: 80%; border:solid 1px white;color: white;">
+                    <img src="icons/feather.png" style="width: 50px; height: 50px; float: left;"><br><br>
                     <hr>
-                    <span><button onclick="send(false)"
-                            style="background-color: lawngreen; border: 5px ridge green;"><b>Send
-                                this to list</b></button></span> <button onclick="send(true)"
-                        style="background-color: orange; border: 5px ridge red;">Send as important</button>
+                    <h2>Text to Send</h2>
+                    <button class="specialAdd" onclick="addSpecial('<h1> </h1>')">Giant Text</button>
+                    <button class="specialAdd" onclick="addSpecial('<h2> </h2>')">Big Text</button>
+                    <button class="specialAdd" onclick="addSpecial('<h3> </h3>')">Medium Text</button>
+                    <button class="specialAdd" onclick="addSpecial('<h5> </h5>')">Small Text</button>
+                    <button class="specialAdd" onclick="addSpecial('<h6> </h6>')">Tiny Text</button>
+                    <button class="specialAdd" onclick="addSpecial('<br>')">Break Line</button>
+                    <button class="specialAdd" onclick="addSpecial('purple')">Purple</button>
+                    <button class="specialAdd" onclick="addSpecial('green')">Green</button>
+                    <button class="specialAdd" onclick="addSpecial('red')">Red</button>
+                    <button class="specialAdd" onclick="addSpecial('cyan')">Cyan</button>
+                    <button class="specialAdd" onclick="randomSpecial()">Random Text</button>
+                    <button class="specialAdd" onclick="addSpecial('Enchant')">Enchantment</button>
                     <br><br>
+                    <div>
+                        <textarea id="itemAdd" placeholder="Insert Item to send"></textarea>
+                    </div>
+                    <br>
+                    <div>
+                        <span><button onclick="send(false)"
+                                style="background-color: lawngreen; border: 5px ridge green;"><b>Send
+                                    this to list</b></button></span> <button onclick="send(true)"
+                            style="background-color: orange; border: 5px ridge brown;">Send as important</button>
+                        <br><br>
+                        <button onclick="clear_command()"
+                            style="background-color: darkred; border: 5px ridge green;"><b>Clear</b></button>
+                    </div>
                 </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
+                <br><br>
+                <br><br>
             </center>
         </div>
         <div id="chooseItem" class="listSection">
@@ -154,44 +163,30 @@
                 <br>
             </center>
         </div>
-        <div id="specialText" class="listSection">
+        <div id="configurations" class="listSection">
             <hr>
-            <h2 style="color: white;"> Special Text</h2>
+            <h2 style="color: white;"> Others</h2>
             <center>
                 <img src="icons/Redstone.webp" style="width: 50px; height: 50px; float: left;">
                 <span>
-                    <h3 style="color: white;">Insert Text:</h3>
+                    <h3 style="color: white;">Configurations</h3>
                 </span>
-                <div style="color:antiquewhite;">
+                <hr>
+                <br><br>
+                <div id="configs">
+                    <label>|List-ID:</label><label id="listIdHandler">loading</label><br><br>
                     <hr>
-                    <br><label>Commands</label><br>
-                    <button class="specialAdd" onclick="addSpecial('<h1> </h1>')">Giant Text</button>
-                    <button class="specialAdd" onclick="addSpecial('<h2> </h2>')">Big Text</button>
-                    <button class="specialAdd" onclick="addSpecial('<h3> </h3>')">Medium Text</button>
-                    <button class="specialAdd" onclick="addSpecial('<h5> </h5>')">Small Text</button>
-                    <button class="specialAdd" onclick="addSpecial('<h6> </h6>')">Tiny Text</button>
-                    <button class="specialAdd" onclick="addSpecial('<br>')">Break Line</button>
-                    <button class="specialAdd" onclick="addSpecial('purple')">Purple</button>
-                    <button class="specialAdd" onclick="addSpecial('green')">Green</button>
-                    <button class="specialAdd" onclick="addSpecial('red')">Red</button>
-                    <button class="specialAdd" onclick="addSpecial('cyan')">Cyan</button>
-                    <button class="specialAdd" onclick="randomSpecial()">Random Text</button>
-                    <button class="specialAdd" onclick="addSpecial('Enchant')">Enchantment</button>
+                    <label>|Dark Wood Theme:</label><button onclick="darkTheme()" class="active">On</button><button
+                        onclick="defaultTheme()" class="desactive">Off</button>
+                    <br><br>
+                    <label>|Sus Mode:</label><button onclick="location.reload()" class="active">On</button><button
+                        onclick="location.reload()" class="desactive">Off</button>
+                    <br><br>
+                    <hr>
+                    <label>|View our other sites:</label><button onclick="catmeow()" class="active">Click Me</button>
+                    <br><br>
                 </div>
-                <br>
-                <div>
-                    <textarea id="commandbar"></textarea>
-                </div>
-                <br>
-                <div>
-                    <button onclick="send_special()"
-                    style="background-color: lawngreen; border: 5px ridge green;"><b>Execute/Send</b></button>
-                    <button onclick="clear_command()"
-                    style="background-color: darkred; border: 5px ridge green;"><b>Clear</b></button>
-                </div>
-                <br>
-                <br>
-                <br>
+                <br><br>
             </center>
         </div>
     </div>
