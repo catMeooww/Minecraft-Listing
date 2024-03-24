@@ -32,7 +32,7 @@ function getData() {
           messageWithTag = "<div class='listItem'><hr><img src='icons/netherstar.gif' style='width: 50px; height: 50px; float: left;' title='Important Item'><h4>" + message + "</h4><p style='font-size:7px'>" + firebaseMessageId + "</p><hr></div>";
           importantListArray.push(message);
         } else {
-          messageWithTag = "<div class='listItem'><hr><img src='icons/emerald.webp' style='width: 50px; height: 50px; float: left;' title='Default Item'><button id='" + firebaseMessageId + "' class='deletebtn' onclick='deleteItem(this.id)'></button><h4>" + message + "</h4><p style='font-size:7px'>" + firebaseMessageId + "</p><hr></div>";
+          messageWithTag = "<div class='listItem'><hr><img src='icons/emerald.webp' style='width: 50px; height: 50px; float: left;' title='Default Item'><button id='" + firebaseMessageId + "' class='deletebtn' onclick='deleteBox(this.id)'></button><h4>" + message + "</h4><p style='font-size:7px'>" + firebaseMessageId + "</p><hr></div>";
           normalListArray.push(message);
         }
 
@@ -62,7 +62,6 @@ function loadtheme() {
 }
 
 //send things
-
 function send(importants) {
   msg = document.getElementById("itemAdd").value;
 
@@ -90,7 +89,6 @@ function goTo(where) {
 }
 
 //select random item
-
 function selectRandomItem(type) {
   if (type == 0) {
     selected = Math.floor(Math.random() * listArray.length);
@@ -141,31 +139,26 @@ function guide(n) {
   window.location = "#output";
 }
 
-
 //item delete
-function deleteItem(itemId) {
-  swal(
-    {
-      title: `DELETE THIS ITEM`,
-      text: "Are you sure DELETING this?",
-      imageUrl:
-        "icons/Creeper.png",
-      imageSize: "150x150",
-      confirmButtonText: "DELETE ITEM"
-    },
-    function (isConfirm) {
-      if (isConfirm) {
-        firebase.database().ref(listName).child(itemId).update({
-          message: null,
-          important: null
-        });
-      }
-    }
-  );
+var itemDeleting = "";
+function deleteBox(itemId) {
+  document.getElementById("infoBox").style.visibility = "visible";
+  document.getElementById("boxButton").innerHTML = "<button id='dangerButton' onclick='deleteItem()'>DELETE ITEM</button>";
+  itemDeleting = itemId
+}
+function deleteItem(){
+  firebase.database().ref(listName).child(itemDeleting).update({
+    message: null,
+    important: null
+  });
+  closeBox();
+  itemDeleting = "";
+}
+function closeBox(){
+  document.getElementById("infoBox").style.visibility = "hidden";
 }
 
 //special text
-
 function addSpecial(tag) {
   if (tag == "purple") {
     document.getElementById("itemAdd").value += "<b class='sp'></b>";
@@ -201,15 +194,32 @@ function clear_command() {
   document.getElementById("itemAdd").value = "";
 }
 
+//configs
 function darkTheme() {
-    localStorage.setItem("theme", "dark");
-    location.reload();
+  localStorage.setItem("theme", "dark");
+  location.reload();
 }
 function defaultTheme() {
   localStorage.setItem("theme", "default");
   location.reload();
 }
 
-function catmeow(){
+function catmeow() {
   window.location = "https://catmeooww.github.io/CatMeooww/catmeoowwProjects.html";
+}
+
+function download() {
+  if (!listArray == [ ]) {
+    downloadfile = listTitle + ".txt";
+    downloadtext = JSON.stringify(listArray);
+    var downloadelement = document.createElement('a');
+    downloadelement.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(downloadtext));
+    downloadelement.setAttribute('download', downloadfile);
+    downloadelement.style.display = 'none';
+    document.body.appendChild(downloadelement);
+
+    downloadelement.click();
+
+    document.body.removeChild(downloadelement);
+  }
 }

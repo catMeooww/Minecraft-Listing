@@ -139,3 +139,27 @@ p {
     background-color: red;
     color: aliceblue;
 }
+
+
+#infoBox{
+    background-image: url(Assets/StoneBar.png);
+    color: aliceblue;
+    text-align: center;
+    border: ridge black 5px;
+}
+
+#closebutton{
+    background-color: rgba(0, 0, 0, 0.500);
+    border: outset black 2px;
+    color: antiquewhite;
+}
+#closebutton:hover{
+    color: red;
+}
+#boxheader{
+    float: left;
+}
+#dangerButton{
+    border: 2px red outset;
+    background-color: orange;
+}

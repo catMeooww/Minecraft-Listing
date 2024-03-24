@@ -27,6 +27,16 @@
 </head>
 
 <body onload="loadtheme()">
+    <div id="infoBox" style="position: fixed;visibility: hidden;top: 5%;left: 5%;z-index: 20;width: 90%;height: 90%;">
+    <span id="boxheader"><button onclick="closeBox()" id="closebutton">X</button><label>Deleting Item</label></span>
+    <br><br>
+    <h3>Are you sure to delete this item?</h3>
+    <img src="icons/Creeper.png" style="width: 20%;">
+    <br><br>
+    <div id="boxButton">
+
+    </div>
+    </div>
     <div id="options" style="float: left; background-image: url(Assets/StoneBar.png);">
         <h1 style="font-size: 60px; text-shadow: 5px 5px 5px cadetblue;">Minecraft Lists</h1>
         <hr>
@@ -174,7 +184,8 @@
                 <hr>
                 <br><br>
                 <div id="configs">
-                    <label>|List-ID:</label><label id="listIdHandler">loading</label><br><br>
+                    <label>|List-ID:</label><label id="listIdHandler">loading</label>
+                    <button onclick="download()" class="active">Download List</button><br><br>
                     <hr>
                     <label>|Dark Wood Theme:</label><button onclick="darkTheme()" class="active">On</button><button
                         onclick="defaultTheme()" class="desactive">Off</button>
