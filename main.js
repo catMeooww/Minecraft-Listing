@@ -4,6 +4,8 @@ var theme = localStorage.getItem("theme");
 var listArray = [];
 var importantListArray = [];
 var normalListArray = [];
+var listSecurity = "";
+var isAlreadyAccessed = false;
 
 if (listName == undefined) {
   window.location = "index.html";
@@ -19,30 +21,39 @@ function getData() {
     normalListArray = [];
     snapshot.forEach(function (childSnapshot) {
       childKey = childSnapshot.key; childData = childSnapshot.val();
-      if (childKey != "servermessage") {
-        firebaseMessageId = childKey;
-        listText = childData;
-
-        message = listText['message'];
-        important = listText['important'];
-
-        listArray.push(message);
-
-        if (important) {
-          messageWithTag = "<div class='listItem'><hr><img src='icons/netherstar.gif' style='width: 50px; height: 50px; float: left;' title='Important Item'><h4>" + message + "</h4><p style='font-size:7px'>" + firebaseMessageId + "</p><hr></div>";
-          importantListArray.push(message);
-        } else {
-          messageWithTag = "<div class='listItem'><hr><img src='icons/emerald.webp' style='width: 50px; height: 50px; float: left;' title='Default Item'><button id='" + firebaseMessageId + "' class='deletebtn' onclick='deleteBox(this.id)'></button><h4>" + message + "</h4><p style='font-size:7px'>" + firebaseMessageId + "</p><hr></div>";
-          normalListArray.push(message);
+      if (childKey == "password") {
+        if (!isAlreadyAccessed) {
+          window.location = '#output';
+          document.getElementById("passBox").style.visibility = 'visible';
+          listSecurity = childData;
+          document.getElementById("passwordHandler").innerHTML = "| password: " + listSecurity + " | Edit:";
         }
-
-        document.getElementById("output").innerHTML += messageWithTag;
       } else {
-        listText = childData;
-        SMessage = listText;
-        messageWithTag = "<div class='serverInfo'><hr><img src='icons/enchant_book.webp' style='width: 40px; height: 40px; float: left;' title='Server Message'><h4>" + SMessage + "</h4><p style='float:right;font-size:7px'></p><hr></div>";
+        if (childKey != "servermessage") {
+          firebaseMessageId = childKey;
+          listText = childData;
 
-        document.getElementById("output").innerHTML += messageWithTag;
+          message = listText['message'];
+          important = listText['important'];
+
+          listArray.push(message);
+
+          if (important) {
+            messageWithTag = "<div class='listItem'><hr><img src='icons/netherstar.gif' style='width: 50px; height: 50px; float: left;' title='Important Item'><h4>" + message + "</h4><p style='font-size:7px'>" + firebaseMessageId + "</p><hr></div>";
+            importantListArray.push(message);
+          } else {
+            messageWithTag = "<div class='listItem'><hr><img src='icons/emerald.webp' style='width: 50px; height: 50px; float: left;' title='Default Item'><button id='" + firebaseMessageId + "' class='deletebtn' onclick='deleteBox(this.id)'></button><h4>" + message + "</h4><p style='font-size:7px'>" + firebaseMessageId + "</p><hr></div>";
+            normalListArray.push(message);
+          }
+
+          document.getElementById("output").innerHTML += messageWithTag;
+        } else {
+          listText = childData;
+          SMessage = listText;
+          messageWithTag = "<div class='serverInfo'><hr><img src='icons/enchant_book.webp' style='width: 40px; height: 40px; float: left;' title='Server Message'><h4>" + SMessage + "</h4><p style='float:right;font-size:7px'></p><hr></div>";
+
+          document.getElementById("output").innerHTML += messageWithTag;
+        }
       }
     });
   });
@@ -146,7 +157,7 @@ function deleteBox(itemId) {
   document.getElementById("boxButton").innerHTML = "<button id='dangerButton' onclick='deleteItem()'>DELETE ITEM</button>";
   itemDeleting = itemId
 }
-function deleteItem(){
+function deleteItem() {
   firebase.database().ref(listName).child(itemDeleting).update({
     message: null,
     important: null
@@ -154,7 +165,7 @@ function deleteItem(){
   closeBox();
   itemDeleting = "";
 }
-function closeBox(){
+function closeBox() {
   document.getElementById("infoBox").style.visibility = "hidden";
 }
 
@@ -209,7 +220,7 @@ function catmeow() {
 }
 
 function download() {
-  if (!listArray == [ ]) {
+  if (!listArray == []) {
     downloadfile = listTitle + ".txt";
     downloadtext = JSON.stringify(listArray);
     var downloadelement = document.createElement('a');
@@ -221,5 +232,30 @@ function download() {
     downloadelement.click();
 
     document.body.removeChild(downloadelement);
+  }
+}
+
+//security
+function passwordVerify() {
+  typedPassword = document.getElementById("insertedPass").value;
+  if (typedPassword == listSecurity) {
+    document.getElementById("passBox").style.visibility = 'hidden';
+    isAlreadyAccessed = true;
+  } else {
+    document.getElementById("passBox").style.border = '1px outset red';
+    document.getElementById("insertedPass").style.borderColor = 'red';
+  }
+}
+
+function addListPassword() {
+  creatingPassword = document.getElementById("newPasswordInput").value;
+  if (!creatingPassword == "") {
+    console.log(creatingPassword);
+    firebase.database().ref(listName).update({
+      password: creatingPassword
+    });
+    setTimeout(()=>{
+      location.reload();
+    },300);
   }
 }

@@ -163,3 +163,13 @@ p {
     border: 2px red outset;
     background-color: orange;
 }
+.list-passbox{
+    color:magenta;
+    border: magenta 2px inset;
+    background-color: black;
+}
+.list-passbtn{
+    border:outset green 2px;
+    background-color: aqua;
+    color:green
+}

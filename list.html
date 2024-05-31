@@ -27,17 +27,30 @@
 </head>
 
 <body onload="loadtheme()">
-    <div id="infoBox" style="position: fixed;visibility: hidden;top: 5%;left: 5%;z-index: 20;width: 90%;height: 90%;">
-    <span id="boxheader"><button onclick="closeBox()" id="closebutton">X</button><label>Deleting Item</label></span>
-    <br><br>
-    <h3>Are you sure to delete this item?</h3>
-    <img src="icons/Creeper.png" style="width: 20%;">
-    <br><br>
-    <div id="boxButton">
+    <div id="passBox"
+        style="position: fixed;visibility: hidden;top: 0%;left: 0%;z-index: 20;width: 99.8%;height: 99.8%;color: aliceblue;background-image: url(Assets/StoneBar.png);">
+        <label>List Security</label>
+        <br><br>
+        <center>
+            <h3>Insert List Password to access</h3>
+            <img src="icons/CommandBlock.webp" style="width: 20%;">
+            <br><br>
+            <input type="password" class="list-passbox" id="insertedPass"><button class="list-passbtn" onclick="passwordVerify()">Access List</button>
+        </center>
+    </div>
 
+    <div id="infoBox" style="position: fixed;visibility: hidden;top: 5%;left: 5%;z-index: 20;width: 90%;height: 90%;">
+        <span id="boxheader"><button onclick="closeBox()" id="closebutton">X</button><label>Deleting Item</label></span>
+        <br><br>
+        <h3>Are you sure to delete this item?</h3>
+        <img src="icons/Creeper.png" style="width: 20%;">
+        <br><br>
+        <div id="boxButton">
+
+        </div>
     </div>
-    </div>
-    <div id="options" style="float: left; background-image: url(Assets/StoneBar.png);">
+
+    <div id="options" style="float: left;margin: -7px;width: 35%; background-image: url(Assets/StoneBar.png);">
         <h1 style="font-size: 60px; text-shadow: 5px 5px 5px cadetblue;">Minecraft Lists</h1>
         <hr>
         <center>
@@ -68,7 +81,7 @@
         </center>
     </div>
     <div id="mainDiv" style="width: 65%;float: right; background-image: url(Assets/Wood\ Background.jpg);z-index: 1px;">
-        <img src="Assets/MINECRAFT_img_background.jpg" style="width: 100%; height: 80%;">
+        <img src="Assets/MINECRAFT_img_background.jpg" style="width: 100%; height: 540px;">
         <center>
             <h1 id="title">Loading</h1>
             <h5 id="subtitle"></h5>
@@ -76,7 +89,7 @@
         <div id="output" class="listSection">Waiting for Database</div>
         <br>
         <div id="addBar" class="listSection">
-            <h2 style="color: white;"> Add Item to list</h2>
+            <h2 style="color: white;">|Add Item to list</h2>
             <center>
                 <div style="width: 80%; border:solid 1px white;color: white;">
                     <img src="icons/feather.png" style="width: 50px; height: 50px; float: left;"><br><br>
@@ -114,7 +127,7 @@
             </center>
         </div>
         <div id="chooseItem" class="listSection">
-            <h2 style="color: white;"> Item Selector</h2>
+            <h2 style="color: white;">|Item Selector</h2>
             <br>
             <br>
             <br>
@@ -142,7 +155,7 @@
             </center>
         </div>
         <div id="craftGuide" class="listSection">
-            <h2 style="color: white;"> Crafting Guide</h2>
+            <h2 style="color: white;">|Crafting Guide</h2>
             <br>
             <br>
             <br>
@@ -175,7 +188,7 @@
         </div>
         <div id="configurations" class="listSection">
             <hr>
-            <h2 style="color: white;"> Others</h2>
+            <h2 style="color: white;">|Others</h2>
             <center>
                 <img src="icons/Redstone.webp" style="width: 50px; height: 50px; float: left;">
                 <span>
@@ -186,6 +199,10 @@
                 <div id="configs">
                     <label>|List-ID:</label><label id="listIdHandler">loading</label>
                     <button onclick="download()" class="active">Download List</button><br><br>
+                    <hr>
+                    <label>|List Security</label><br><br>
+                    <label id="passwordHandler">|Add a list Password:</label><input class="list-passbox" id="newPasswordInput" placeholder="Password">
+                    <button class="list-passbtn" onclick="addListPassword()">Add Password</button>
                     <hr>
                     <label>|Dark Wood Theme:</label><button onclick="darkTheme()" class="active">On</button><button
                         onclick="defaultTheme()" class="desactive">Off</button>
