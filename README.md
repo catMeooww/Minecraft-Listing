@@ -13,7 +13,10 @@ ________________________________________________
  - Add Item: You can customize your itens when adding it to the list!
  - Item Selector: select a random item of the list, you can choose if it will select all the list, only normal or only important items.
  - Crafting Guide: this will add a small list of items you need to craft what you want.
- - Configurations: You can change to dark theme now. (if theres a "Sus Mode" option, do not active it)
+ - Commands: You can change to dark theme now, download your list and add a password. (if theres a "Sus Mode" option, do not active it)
 
 ## Other helpful things are coming!
  - To better use your list, I am adding new functions in the site!
+
+## For more security
+To protect your list, go to the -Commands section and add a password.
