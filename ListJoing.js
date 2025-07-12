@@ -41,3 +41,11 @@ function redirect() {
     window.location = "list.html";
   }, 500)
 }
+
+var theme = localStorage.getItem("theme");
+function loadthemeJOIN() {
+  console.log(theme)
+  if (theme == "dark") {
+    document.getElementById("Login").style.backgroundImage = "url(Assets/DarkWoodBackground.jpg)";
+  }
+}

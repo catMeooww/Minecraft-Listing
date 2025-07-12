@@ -28,14 +28,15 @@
 
 <body onload="loadtheme()">
     <div id="passBox"
-        style="position: fixed;visibility: hidden;top: 0%;left: 0%;z-index: 20;width: 99.8%;height: 99.8%;color: aliceblue;background-image: url(Assets/StoneBar.png);">
+        style="position: fixed;visibility: hidden;top: 0%;left: 0%;z-index: 20;width: 99.8%;height: 100%;color: aliceblue;background-image: url(Assets/StoneBar.png);">
         <label>List Security</label>
         <br><br>
         <center>
             <h3>Insert List Password to access</h3>
             <img src="icons/CommandBlock.webp" style="width: 20%;">
             <br><br>
-            <input type="password" class="list-passbox" id="insertedPass"><button class="list-passbtn" onclick="passwordVerify()">Access List</button>
+            <input type="password" class="list-passbox" id="insertedPass"><button class="list-passbtn"
+                onclick="passwordVerify()">Access List</button>
         </center>
     </div>
 
@@ -50,6 +51,31 @@
         </div>
     </div>
 
+    <div id="options-mobile"
+        style="position: fixed;top:0px;left:0px;width: 100%; background-image: url(Assets/StoneBar.png);visibility: hidden;z-index: 15;display: inline-flex;justify-content: center;border-bottom: 2px solid aliceblue;padding: 20px;">
+        <center>
+            <p style="font-size: 20px;text-shadow: 5px 5px 5px cadetblue;color:aliceblue">Minecraft Lists</p>
+            <div class="Mc-Btn" onclick="goTo('#output')" style="width: 50px; height: 50px;display: inline-flex;">
+                <img src="icons/chest.webp" style="width: 50px; height: 50px; border: 2px outset white;">
+            </div>
+            <div class="Mc-Btn" onclick="goTo('#addBar')" style="width: 50px; height: 50px;display: inline-flex;">
+                <img src="icons/feather.png" style="width: 50px; height: 50px; border: 2px outset white;">
+            </div>
+            <div class="Mc-Btn" onclick="goTo('#chooseItem')" style="width: 50px; height: 50px;display: inline-flex;">
+                <img src="icons/Dropper.png" style="width: 50px; height: 50px; border: 2px outset white;">
+            </div>
+            <div class="Mc-Btn" onclick="goTo('#craftGuide')" style="width: 50px; height: 50px;display: inline-flex;">
+                <img src="icons/CraftTable.webp" style="width: 50px; height: 50px; border: 2px outset white;">
+            </div>
+            <div class="Mc-Btn" onclick="goTo('#configurations')"
+                style="width: 50px; height: 50px;display: inline-flex;">
+                <img src="icons/CommandBlock.webp" style="width: 50px; height: 50px; border: 2px outset white;">
+            </div>
+            <div class="Mc-Btn" onclick="goTo('index.html')" style="width: 50px; height: 50px;display: inline-flex;">
+                <img src="icons/exitdoor.webp" style="width: 50px; height: 50px; border: 2px outset white;">
+            </div>
+        </center>
+    </div>
     <div id="options" style="float: left;margin: -7px;width: 35%; background-image: url(Assets/StoneBar.png);">
         <h1 style="font-size: 60px; text-shadow: 5px 5px 5px cadetblue;">Minecraft Lists</h1>
         <hr>
@@ -201,7 +227,8 @@
                     <button onclick="download()" class="active">Download List</button><br><br>
                     <hr>
                     <label>|List Security</label><br><br>
-                    <label id="passwordHandler">|Add a list Password:</label><input class="list-passbox" id="newPasswordInput" placeholder="Password">
+                    <label id="passwordHandler">|Add a list Password:</label><input class="list-passbox"
+                        id="newPasswordInput" placeholder="Password">
                     <button class="list-passbtn" onclick="addListPassword()">Add Password</button>
                     <hr>
                     <label>|Dark Wood Theme:</label><button onclick="darkTheme()" class="active">On</button><button

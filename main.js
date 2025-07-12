@@ -23,7 +23,7 @@ function getData() {
       childKey = childSnapshot.key; childData = childSnapshot.val();
       if (childKey == "password") {
         if (!isAlreadyAccessed) {
-          window.location = '#output';
+          //window.location = '#output';
           document.getElementById("passBox").style.visibility = 'visible';
           listSecurity = childData;
           document.getElementById("passwordHandler").innerHTML = "| password: " + listSecurity + " | Edit:";
@@ -66,6 +66,13 @@ setTimeout(() => {
 }, 500)
 
 function loadtheme() {
+  var testMobile = /iPhone|Android|iPad/i.test(navigator.userAgent);
+  if (testMobile){
+    document.getElementById("options-mobile").style.visibility = "visible";
+    document.getElementById("options").style.visibility = "hidden";
+    document.getElementById("mainDiv").style.width = "100%";
+    document.getElementById("mainDiv").style.paddingTop = "100px";
+  }
   console.log(theme)
   if (theme == "dark") {
     document.getElementById("mainDiv").style.backgroundImage = "url(Assets/DarkWoodBackground.jpg)";
